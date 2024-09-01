@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|ARM">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM">
+      <Configuration>Release</Configuration>
+      <Platform>ARM</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|ARM64">
+      <Configuration>Debug</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|ARM64">
+      <Configuration>Release</Configuration>
+      <Platform>ARM64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{03ec0d43-cf4c-47f0-b378-bf9ff6751c8d}</ProjectGuid>
+    <Keyword>Linux</Keyword>
+    <RootNamespace>ModbusBridge</RootNamespace>
+    <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
+    <ApplicationType>Linux</ApplicationType>
+    <ApplicationTypeRevision>1.0</ApplicationTypeRevision>
+    <TargetLinuxPlatform>Raspberry</TargetLinuxPlatform>
+    <LinuxProjectType>{8748239F-558C-44D1-944B-07B09C35B330}</LinuxProjectType>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>WSL_1_0</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'" Label="Configuration">
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'" Label="Configuration">
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <IncludePath>\\192.168.0.19\\usr\\lib\\gcc\\arm-linux-gnueabihf\\6.3.0\\include-fixed;\\\\192.168.0.19\\usr\\lib\\gcc\\arm-linux-gnueabihf\\6.3.0\\include;\\\\192.168.0.19\\usr\\include\\arm-linux-gnueabihf;\\\\192.168.0.19\\usr\\include\\arm-linux-gnueabihf\\c++\\6.3.0;\\\\192.168.0.19\\usr\\include\\c++\\6.3.0;\\\\192.168.0.19\\usr\\include;include</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>\\192.168.0.19\\usr\\lib\\gcc\\arm-linux-gnueabihf\\6.3.0\\include-fixed;\\\\192.168.0.19\\usr\\lib\\gcc\\arm-linux-gnueabihf\\6.3.0\\include;\\\\192.168.0.19\\usr\\include\\arm-linux-gnueabihf;\\\\192.168.0.19\\usr\\include\\arm-linux-gnueabihf\\c++\\6.3.0;\\\\192.168.0.19\\usr\\include\\c++\\6.3.0;\\\\192.168.0.19\\usr\\include;include</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <Link>
+      <LibraryDependencies>wiringPi</LibraryDependencies>
+    </Link>
+    <RemotePostBuildEvent>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
+    </RemotePostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <LibraryDependencies>wiringPi</LibraryDependencies>
+    </Link>
+    <RemotePostBuildEvent>
+      <Command>
+      </Command>
+      <Message>
+      </Message>
+    </RemotePostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <Link>
+      <LibraryDependencies>wiringPi</LibraryDependencies>
+    </Link>
+    <RemotePostBuildEvent>
+      <Command>gpio export 17 out</Command>
+      <Message>export pin 17 using the gpio utility so that we can execute the blink program without sudo</Message>
+    </RemotePostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Link>
+      <LibraryDependencies>wiringPi</LibraryDependencies>
+    </Link>
+    <RemotePostBuildEvent>
+      <Command>gpio export 17 out</Command>
+      <Message>export pin 17 using the gpio utility so that we can execute the blink program without sudo</Message>
+    </RemotePostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\Models\ModbusSettings.cpp" />
+    <ClCompile Include="src\ModbusTcpPort.cpp" />
+    <ClCompile Include="src\ModbusRtuPort.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\toml.hpp" />
+    <ClInclude Include="include\toml\combinator.hpp" />
+    <ClInclude Include="include\toml\comments.hpp" />
+    <ClInclude Include="include\toml\datetime.hpp" />
+    <ClInclude Include="include\toml\exception.hpp" />
+    <ClInclude Include="include\toml\from.hpp" />
+    <ClInclude Include="include\toml\get.hpp" />
+    <ClInclude Include="include\toml\into.hpp" />
+    <ClInclude Include="include\toml\lexer.hpp" />
+    <ClInclude Include="include\toml\literal.hpp" />
+    <ClInclude Include="include\toml\parser.hpp" />
+    <ClInclude Include="include\toml\region.hpp" />
+    <ClInclude Include="include\toml\result.hpp" />
+    <ClInclude Include="include\toml\serializer.hpp" />
+    <ClInclude Include="include\toml\source_location.hpp" />
+    <ClInclude Include="include\toml\storage.hpp" />
+    <ClInclude Include="include\toml\string.hpp" />
+    <ClInclude Include="include\toml\traits.hpp" />
+    <ClInclude Include="include\toml\types.hpp" />
+    <ClInclude Include="include\toml\utility.hpp" />
+    <ClInclude Include="include\toml\value.hpp" />
+    <ClInclude Include="src\Models\ModbusSerialSettings.hpp" />
+    <ClInclude Include="src\Models\ModbusSettings.hpp" />
+    <ClInclude Include="src\ModbusTcpPort.h" />
+    <ClInclude Include="src\ModbusRtuPort.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="appsettings.toml">
+      <RemoteCopyFile Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+      </RemoteCopyFile>
+      <RemoteCopyFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </RemoteCopyFile>
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+      </RemoteCopyToOutputDir>
+      <RemoteCopyToOutputDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </RemoteCopyToOutputDir>
+    </None>
+  </ItemGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>\\192.168.0.19\\usr\\include\\modbus;</AdditionalIncludeDirectories>
+      <AdditionalOptions>`pkg-config --libs --cflags libmodbus` %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link />
+    <Link>
+      <AdditionalOptions>`pkg-config --libs --cflags libmodbus` %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <PreBuildEvent>
+      <AdditionalSourcesToCopyMapping>
+      </AdditionalSourcesToCopyMapping>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>\\192.168.0.19\\usr\\include\\modbus;</AdditionalIncludeDirectories>
+      <AdditionalOptions>`pkg-config --libs --cflags libmodbus` %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link />
+    <Link>
+      <AdditionalOptions>`pkg-config --libs --cflags libmodbus` %(AdditionalOptions)</AdditionalOptions>
+    </Link>
+    <PreBuildEvent>
+      <AdditionalSourcesToCopyMapping>
+      </AdditionalSourcesToCopyMapping>
+    </PreBuildEvent>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\ModbusRtuPort.cpp" />
+    <ClCompile Include="src\ModbusTcpPort.cpp" />
+    <ClCompile Include="src\Models\ModbusSettings.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ModbusRtuPort.h" />
+    <ClInclude Include="src\ModbusTcpPort.h" />
+    <ClInclude Include="include\toml.hpp" />
+    <ClInclude Include="include\toml\combinator.hpp" />
+    <ClInclude Include="include\toml\comments.hpp" />
+    <ClInclude Include="include\toml\datetime.hpp" />
+    <ClInclude Include="include\toml\exception.hpp" />
+    <ClInclude Include="include\toml\from.hpp" />
+    <ClInclude Include="include\toml\get.hpp" />
+    <ClInclude Include="include\toml\into.hpp" />
+    <ClInclude Include="include\toml\lexer.hpp" />
+    <ClInclude Include="include\toml\literal.hpp" />
+    <ClInclude Include="include\toml\parser.hpp" />
+    <ClInclude Include="include\toml\region.hpp" />
+    <ClInclude Include="include\toml\result.hpp" />
+    <ClInclude Include="include\toml\serializer.hpp" />
+    <ClInclude Include="include\toml\source_location.hpp" />
+    <ClInclude Include="include\toml\storage.hpp" />
+    <ClInclude Include="include\toml\string.hpp" />
+    <ClInclude Include="include\toml\traits.hpp" />
+    <ClInclude Include="include\toml\types.hpp" />
+    <ClInclude Include="include\toml\utility.hpp" />
+    <ClInclude Include="include\toml\value.hpp" />
+    <ClInclude Include="src\Models\ModbusSerialSettings.hpp" />
+    <ClInclude Include="src\Models\ModbusSettings.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="appsettings.toml" />
+  </ItemGroup>
+</Project>

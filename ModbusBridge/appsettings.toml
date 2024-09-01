@@ -1,0 +1,16 @@
+# File di configurazione.
+
+title = "Config"
+
+#Modbus TCP
+IpAddress = "127.0.0.1"
+IpPort = 1505
+Timeout = 500
+
+
+[[ModbusSerialSettings]]
+PortName = "/dev/ttyUSB0"
+BaudRate = 9600
+Parity = "N"
+DataBit = 8
+StopBit = 1
